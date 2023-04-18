@@ -24,6 +24,8 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.composecleanroom.feature_note.core.utils.TestTags.TEXTFIELD_CONTENT_TAG
+import com.example.composecleanroom.feature_note.core.utils.TestTags.TEXTFIELD_TITLE_TAG
 import com.example.composecleanroom.feature_note.domain.model.Note
 import com.example.composecleanroom.feature_note.presenter.add_edit_note.AddEditevent
 import com.example.composecleanroom.feature_note.presenter.add_edit_note.viewModel.AddViewModel
@@ -110,7 +112,8 @@ fun AddEditNotScreen(navController: NavController,noteColor:Int,viewModel:AddVie
             }, onFocusChange = {
                 viewModel.onEvent(AddEditevent.FocusChangeTitle(it))
             }, hintVisible = titleState.isHintVisible,
-            singleLine = true, textStyle = MaterialTheme.typography.h5)
+            singleLine = true, textStyle = MaterialTheme.typography.h5,
+            testTag = TEXTFIELD_TITLE_TAG)
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -120,7 +123,9 @@ fun AddEditNotScreen(navController: NavController,noteColor:Int,viewModel:AddVie
                 viewModel.onEvent(AddEditevent.FocusChangeContent(it))
             }, hintVisible = contentState.isHintVisible,
                 singleLine = false, textStyle = MaterialTheme.typography.body1,
-            modifier = Modifier.fillMaxHeight())
+            modifier = Modifier.fillMaxHeight(),
+                testTag = TEXTFIELD_CONTENT_TAG
+            )
         }
     }
 }

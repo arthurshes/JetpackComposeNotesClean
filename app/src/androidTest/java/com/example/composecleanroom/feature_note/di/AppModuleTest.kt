@@ -15,11 +15,11 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object AppModuleTest {
     @Provides
     @Singleton
     fun provideMainDb(app:Application):MainDb =
-        Room.databaseBuilder(app,MainDb::class.java,"noteCompose.db")
+        Room.inMemoryDatabaseBuilder(app,MainDb::class.java)
             .build()
 
     @Provides

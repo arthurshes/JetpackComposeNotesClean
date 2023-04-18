@@ -17,17 +17,20 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.ColorUtils
+import com.example.composecleanroom.feature_note.core.utils.TestTags.NOTE_TAG_ITEM
 import com.example.composecleanroom.feature_note.domain.model.Note
 
 @Composable
 fun NoteItem(note:Note,modifier: Modifier = Modifier,cornerRadius:Dp = 10.dp,
 cutCornerSize:Dp = 30.dp,
 onDelete:()->Unit) {
- Box(modifier = modifier) {
+ Box(modifier = modifier
+     .testTag(NOTE_TAG_ITEM)) {
      Canvas(modifier = Modifier.matchParentSize()){
          val clipPath = Path().apply {
              lineTo(size.width - cutCornerSize.toPx(),0f)
